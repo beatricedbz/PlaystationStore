@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_overview"
+        android:name="com.example.playstationstore.Fragment_Overview"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_overview" />
+    <fragment
+        android:id="@+id/fragment_store"
+        android:name="com.example.playstationstore.Fragment_Store"
+        android:label="fragment_store"
+        tools:layout="@layout/fragment_store" />
+    <fragment
+        android:id="@+id/fragment_library"
+        android:name="com.example.playstationstore.Fragment_Library"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/fragment_search"
+        android:name="com.example.playstationstore.Fragment_Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.example.playstationstore.Fragment_Main"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+</navigation>
