@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class Fragment_Overview : Fragment() {
+class FragmentOverview : Fragment() {
 
 
     override fun onCreateView(
@@ -19,6 +19,6 @@ class Fragment_Overview : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = Fragment_Overview()
+        fun newInstance() = FragmentOverview()
     }
 }

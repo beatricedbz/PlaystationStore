@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class GameRecyclerAdapter : RecyclerView.Adapter<GameRecyclerAdapter.MyViewHolder>() {
+class GameRecyclerAdapter(
+    private val clickListener: (Game) -> Unit,
+) : RecyclerView.Adapter<GameRecyclerAdapter.MyViewHolder>() {
 
     var games: List<Game> = emptyList()
 
@@ -19,10 +21,6 @@ class GameRecyclerAdapter : RecyclerView.Adapter<GameRecyclerAdapter.MyViewHolde
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivGame: ImageView = itemView.findViewById(R.id.ivGame)
-        val tvGameTitle: TextView = itemView.findViewById(R.id.tvTitle)
-        val tvGenre: TextView = itemView.findViewById(R.id.tvGenre)
-        val tvPlatform: TextView = itemView.findViewById(R.id.tvPlatform)
-        val tvDescription: TextView = itemView.findViewById(R.id.tvDescription)
     }
 
     override fun onCreateViewHolder(
@@ -31,19 +29,18 @@ class GameRecyclerAdapter : RecyclerView.Adapter<GameRecyclerAdapter.MyViewHolde
     ): MyViewHolder {
         val itemView = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.recyclerview_item, parent, false)
+            .inflate(R.layout.recyclerview_store_item, parent, false)
         return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.tvGameTitle.text = games[position].title
-        holder.tvGenre.text = games[position].genre
-        holder.tvPlatform.text = games[position].platform
-        holder.tvDescription.text = games[position].short_description
 
         Glide.with(holder.itemView.context)
             .load(games[position].thumbnail)
             .into(holder.ivGame)
+
+        val clickedGame = games[position]
+        holder.ivGame.setOnClickListener { clickListener(clickedGame) }
     }
 
     override fun getItemCount(): Int {
